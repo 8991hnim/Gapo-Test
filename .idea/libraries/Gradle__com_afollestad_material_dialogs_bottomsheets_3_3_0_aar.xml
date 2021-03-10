@@ -4,6 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5c030f7c9d83ff182c3051d3ac5ba409/jetified-bottomsheets-3.3.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5c030f7c9d83ff182c3051d3ac5ba409/jetified-bottomsheets-3.3.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5c030f7c9d83ff182c3051d3ac5ba409/jetified-bottomsheets-3.3.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/edc9a5a84a41b166f725f1d34366551b/jetified-bottomsheets-3.3.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/edc9a5a84a41b166f725f1d34366551b/jetified-bottomsheets-3.3.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/edc9a5a84a41b166f725f1d34366551b/jetified-bottomsheets-3.3.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.afollestad.material-dialogs/bottomsheets/3.3.0/39aac49eb3baf4115938e56ef7cc7b404aec772a/bottomsheets-3.3.0-javadoc.jar!/" />

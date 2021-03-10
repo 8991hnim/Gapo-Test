@@ -4,6 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cbeb7fc8c0398e1ceb50a1a7160cefcf/jetified-lifecycle-3.3.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cbeb7fc8c0398e1ceb50a1a7160cefcf/jetified-lifecycle-3.3.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cbeb7fc8c0398e1ceb50a1a7160cefcf/jetified-lifecycle-3.3.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f85319e6c109e350b52ff6335d44327/jetified-lifecycle-3.3.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f85319e6c109e350b52ff6335d44327/jetified-lifecycle-3.3.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f85319e6c109e350b52ff6335d44327/jetified-lifecycle-3.3.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.afollestad.material-dialogs/lifecycle/3.3.0/e3439cf06b3fd8bdb7f10c56bc502d82f0857557/lifecycle-3.3.0-javadoc.jar!/" />

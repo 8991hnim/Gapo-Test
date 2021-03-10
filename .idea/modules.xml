@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BaseClean.iml" filepath="$PROJECT_DIR$/.idea/modules/BaseClean.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BaseClean.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BaseClean.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/commonRes/BaseClean.commonRes.iml" filepath="$PROJECT_DIR$/.idea/modules/commonRes/BaseClean.commonRes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GapoTest.iml" filepath="$PROJECT_DIR$/.idea/modules/GapoTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/GapoTest.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/GapoTest.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/commonRes/GapoTest.commonRes.iml" filepath="$PROJECT_DIR$/.idea/modules/commonRes/GapoTest.commonRes.iml" />
     </modules>
   </component>
 </project>
