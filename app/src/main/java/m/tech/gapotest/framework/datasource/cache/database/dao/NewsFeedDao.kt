@@ -18,10 +18,10 @@ interface NewsFeedDao {
     @Delete
     suspend fun deleteNewsFeed(newsFeedEntity: NewsFeedEntity)
 
-    @Query("SELECT * FROM news_feed")
+    @Query("SELECT * FROM news_feed ORDER BY published_date DESC, title ASC")
     suspend fun getNewsFeed(): List<NewsFeedEntity>
 
-    @Query("SELECT * FROM news_feed LIMIT :page * :limit")
+    @Query("SELECT * FROM news_feed ORDER BY published_date DESC, title ASC LIMIT :page * :limit")
     suspend fun getNewsFeed(page: Int, limit: Int): List<NewsFeedEntity>
 
     @Query("SELECT * FROM news_feed WHERE document_id = :id")

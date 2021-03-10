@@ -1,5 +1,6 @@
 package m.tech.gapotest.business.interactors
 
+import android.util.Log
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
@@ -48,9 +49,7 @@ constructor(
                     return@flow
                 }
             }
-
             syncNewsFeed(newsFeedCacheDataSource.getNewsFeed().toMutableList(), networkNewsFeed)
-
             emit(DataState.Success(newsFeedCacheDataSource.getNewsFeed(page, limit)))
         }
 
@@ -73,17 +72,18 @@ constructor(
     ) = withContext(IO) {
         val promise = async {
             for (newsFeed in networks) {
-                launch {
+//                launch {
                     newsFeedCacheDataSource.getNewsFeedById(newsFeed.baseDocument.documentId)
                         ?.let { cached ->
                             removeFromList(caches, cached)
                             newsFeedCacheDataSource.updateNewsFeed(newsFeed)
-                        } ?: newsFeedCacheDataSource.addNewsFeed(newsFeed)
-                }
+                        } ?: kotlin.run {
+                        newsFeedCacheDataSource.addNewsFeed(newsFeed)
+                    }
+//                }
             }
         }
         promise.await()
-
         for (cached in caches) {
             launch {
                 newsFeedCacheDataSource.deleteNewsFeed(cached)

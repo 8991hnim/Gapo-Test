@@ -13,7 +13,7 @@ data class BaseDocumentEntity(
     val description: String,
 
     @ColumnInfo(name = "published_date")
-    val publishedDate: String,
+    val publishedDate: Long,
 
     @ColumnInfo(name = "origin_url")
     val originUrl: String,

@@ -1,21 +1,28 @@
 package m.tech.gapotest.framework.datasource.cache.mappers
 
+import android.annotation.SuppressLint
+import android.util.Log
 import m.tech.gapotest.business.domain.*
 import m.tech.gapotest.framework.datasource.DomainMapper
 import m.tech.gapotest.framework.datasource.cache.model.*
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 class NewsFeedEntityMapper
 @Inject
 constructor() : DomainMapper<NewsFeedEntity, NewsFeed> {
 
+    @SuppressLint("SimpleDateFormat")
     override fun toDomain(model: NewsFeedEntity): NewsFeed {
+        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+
         return NewsFeed(
             BaseDocument(
                 documentId = model.documentId,
                 title = model.baseDocument.title,
                 description = model.baseDocument.description,
-                publishedDate = model.baseDocument.publishedDate,
+                publishedDate = sdf.format(model.baseDocument.publishedDate),
                 originUrl = model.baseDocument.originUrl,
                 publisher = Publisher(
                     id = model.baseDocument.publisher.id,
@@ -30,13 +37,16 @@ constructor() : DomainMapper<NewsFeedEntity, NewsFeed> {
         )
     }
 
+    @SuppressLint("SimpleDateFormat")
     override fun fromDomain(domainModel: NewsFeed): NewsFeedEntity {
+        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+
         return NewsFeedEntity(
             documentId = domainModel.baseDocument.documentId,
             BaseDocumentEntity(
                 title = domainModel.baseDocument.title,
                 description = domainModel.baseDocument.description,
-                publishedDate = domainModel.baseDocument.publishedDate,
+                publishedDate = sdf.parse(domainModel.baseDocument.publishedDate)?.time ?: 0,
                 originUrl = domainModel.baseDocument.originUrl,
                 publisher = PublisherEntity(
                     id = domainModel.baseDocument.publisher.id,

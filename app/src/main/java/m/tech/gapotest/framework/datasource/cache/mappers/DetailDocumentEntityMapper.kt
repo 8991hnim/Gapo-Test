@@ -1,13 +1,18 @@
 package m.tech.gapotest.framework.datasource.cache.mappers
 
+import android.annotation.SuppressLint
 import m.tech.gapotest.business.domain.*
 import m.tech.gapotest.framework.datasource.DomainMapper
 import m.tech.gapotest.framework.datasource.cache.model.*
+import java.text.SimpleDateFormat
 import javax.inject.Inject
 
 class DetailDocumentEntityMapper
 @Inject
 constructor() : DomainMapper<DetailDocumentEntity, DetailDocument> {
+
+    @SuppressLint("SimpleDateFormat")
+    private val sdf = SimpleDateFormat("yyyy-mm-dd hh:mm:ss")
 
     override fun toDomain(model: DetailDocumentEntity): DetailDocument {
         return DetailDocument(
@@ -15,7 +20,7 @@ constructor() : DomainMapper<DetailDocumentEntity, DetailDocument> {
                 documentId = model.documentId,
                 title = model.baseDocument.title,
                 description = model.baseDocument.description,
-                publishedDate = model.baseDocument.publishedDate,
+                publishedDate = sdf.format(model.baseDocument.publishedDate),
                 originUrl = model.baseDocument.originUrl,
                 publisher = Publisher(
                     id = model.baseDocument.publisher.id,
@@ -33,7 +38,9 @@ constructor() : DomainMapper<DetailDocumentEntity, DetailDocument> {
             BaseDocumentEntity(
                 title = domainModel.baseDocument.title,
                 description = domainModel.baseDocument.description,
-                publishedDate = domainModel.baseDocument.publishedDate,
+                publishedDate = sdf.parse(
+                    domainModel.baseDocument.publishedDate.replace("T", " ").replace("Z", " ")
+                )?.time ?: 0,
                 originUrl = domainModel.baseDocument.originUrl,
                 publisher = PublisherEntity(
                     id = domainModel.baseDocument.publisher.id,

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "14948a23b26496bfe752a1f7ab82a3ce",
+    "identityHash": "6afac383fa95f878e4e6e8ebc4b79ab5",
     "entities": [
       {
         "tableName": "dummy",
@@ -38,7 +38,7 @@
       },
       {
         "tableName": "news_feed",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`document_id` TEXT NOT NULL, `content_type` TEXT NOT NULL, `images` TEXT, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `published_date` TEXT NOT NULL, `origin_url` TEXT NOT NULL, `pub_id` TEXT NOT NULL, `pub_name` TEXT NOT NULL, `pub_icon` TEXT NOT NULL, `ava_href` TEXT, `ava_mainColor` TEXT, `ava_width` INTEGER, `ava_height` INTEGER, `content_href` TEXT, `content_duration` INTEGER, `content_caption` TEXT, `content_preview_img_href` TEXT, `content_preview_img_mainColor` TEXT, `content_preview_img_width` INTEGER, `content_preview_img_height` INTEGER, PRIMARY KEY(`document_id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`document_id` TEXT NOT NULL, `content_type` TEXT NOT NULL, `images` TEXT, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `published_date` INTEGER NOT NULL, `origin_url` TEXT NOT NULL, `pub_id` TEXT NOT NULL, `pub_name` TEXT NOT NULL, `pub_icon` TEXT NOT NULL, `ava_href` TEXT, `ava_mainColor` TEXT, `ava_width` INTEGER, `ava_height` INTEGER, `content_href` TEXT, `content_duration` INTEGER, `content_caption` TEXT, `content_preview_img_href` TEXT, `content_preview_img_mainColor` TEXT, `content_preview_img_width` INTEGER, `content_preview_img_height` INTEGER, PRIMARY KEY(`document_id`))",
         "fields": [
           {
             "fieldPath": "documentId",
@@ -73,7 +73,7 @@
           {
             "fieldPath": "baseDocument.publishedDate",
             "columnName": "published_date",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -178,7 +178,7 @@
       },
       {
         "tableName": "detail_document",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`document_id` TEXT NOT NULL, `template_type` TEXT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `published_date` TEXT NOT NULL, `origin_url` TEXT NOT NULL, `pub_id` TEXT NOT NULL, `pub_name` TEXT NOT NULL, `pub_icon` TEXT NOT NULL, PRIMARY KEY(`document_id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`document_id` TEXT NOT NULL, `template_type` TEXT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `published_date` INTEGER NOT NULL, `origin_url` TEXT NOT NULL, `pub_id` TEXT NOT NULL, `pub_name` TEXT NOT NULL, `pub_icon` TEXT NOT NULL, PRIMARY KEY(`document_id`))",
         "fields": [
           {
             "fieldPath": "documentId",
@@ -207,7 +207,7 @@
           {
             "fieldPath": "baseDocument.publishedDate",
             "columnName": "published_date",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -248,7 +248,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '14948a23b26496bfe752a1f7ab82a3ce')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6afac383fa95f878e4e6e8ebc4b79ab5')"
     ]
   }
 }

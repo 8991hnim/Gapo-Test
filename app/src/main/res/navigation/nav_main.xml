@@ -2,13 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_main.xml"
-    app:startDestination="@id/splashFragment">
+    android:id="@+id/nav_main"
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/splashFragment"
         android:name="m.tech.gapotest.framework.presentation.splash.SplashFragment"
         android:label="SplashFragment"
-        tools:layout="@layout/fragment_splash">
-    </fragment>
+        tools:layout="@layout/fragment_splash" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="m.tech.gapotest.framework.presentation.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main" />
 </navigation>
