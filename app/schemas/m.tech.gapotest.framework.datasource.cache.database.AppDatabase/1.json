@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "e3056daf6ff764a2e6aeb7c714441f66",
+    "identityHash": "14948a23b26496bfe752a1f7ab82a3ce",
     "entities": [
       {
         "tableName": "dummy",
@@ -35,12 +35,220 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "news_feed",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`document_id` TEXT NOT NULL, `content_type` TEXT NOT NULL, `images` TEXT, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `published_date` TEXT NOT NULL, `origin_url` TEXT NOT NULL, `pub_id` TEXT NOT NULL, `pub_name` TEXT NOT NULL, `pub_icon` TEXT NOT NULL, `ava_href` TEXT, `ava_mainColor` TEXT, `ava_width` INTEGER, `ava_height` INTEGER, `content_href` TEXT, `content_duration` INTEGER, `content_caption` TEXT, `content_preview_img_href` TEXT, `content_preview_img_mainColor` TEXT, `content_preview_img_width` INTEGER, `content_preview_img_height` INTEGER, PRIMARY KEY(`document_id`))",
+        "fields": [
+          {
+            "fieldPath": "documentId",
+            "columnName": "document_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contentType",
+            "columnName": "content_type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "images",
+            "columnName": "images",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "baseDocument.title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseDocument.description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseDocument.publishedDate",
+            "columnName": "published_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseDocument.originUrl",
+            "columnName": "origin_url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseDocument.publisher.id",
+            "columnName": "pub_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseDocument.publisher.name",
+            "columnName": "pub_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseDocument.publisher.icon",
+            "columnName": "pub_icon",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "avatar.href",
+            "columnName": "ava_href",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "avatar.mainColor",
+            "columnName": "ava_mainColor",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "avatar.width",
+            "columnName": "ava_width",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "avatar.height",
+            "columnName": "ava_height",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "content.href",
+            "columnName": "content_href",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "content.duration",
+            "columnName": "content_duration",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "content.caption",
+            "columnName": "content_caption",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "content.previewImage.href",
+            "columnName": "content_preview_img_href",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "content.previewImage.mainColor",
+            "columnName": "content_preview_img_mainColor",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "content.previewImage.width",
+            "columnName": "content_preview_img_width",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "content.previewImage.height",
+            "columnName": "content_preview_img_height",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "document_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "detail_document",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`document_id` TEXT NOT NULL, `template_type` TEXT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `published_date` TEXT NOT NULL, `origin_url` TEXT NOT NULL, `pub_id` TEXT NOT NULL, `pub_name` TEXT NOT NULL, `pub_icon` TEXT NOT NULL, PRIMARY KEY(`document_id`))",
+        "fields": [
+          {
+            "fieldPath": "documentId",
+            "columnName": "document_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "templateType",
+            "columnName": "template_type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseDocument.title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseDocument.description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseDocument.publishedDate",
+            "columnName": "published_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseDocument.originUrl",
+            "columnName": "origin_url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseDocument.publisher.id",
+            "columnName": "pub_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseDocument.publisher.name",
+            "columnName": "pub_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseDocument.publisher.icon",
+            "columnName": "pub_icon",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "document_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e3056daf6ff764a2e6aeb7c714441f66')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '14948a23b26496bfe752a1f7ab82a3ce')"
     ]
   }
 }

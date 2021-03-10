@@ -12,7 +12,7 @@ import m.tech.gapotest.business.data.network.NetworkResult
 import m.tech.gapotest.business.data.network.abstraction.DummyNetworkDataSource
 import m.tech.gapotest.business.data.safeApiCall
 import m.tech.gapotest.business.domain.Dummy
-import m.tech.gapotest.business.interactors.InteractorEx.removeFromList
+import m.tech.gapotest.business.interactors.UseCaseEx.removeFromList
 import javax.inject.Inject
 
 class GetDummies
