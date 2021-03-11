@@ -1,10 +1,10 @@
 package m.tech.gapotest.framework.presentation.detail
 
 import android.annotation.SuppressLint
-import android.util.Base64
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.RequestManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,6 +25,10 @@ class DetailFragment(
 
     override fun init(view: View) {
         hideBottomNav()
+
+        binding.header.ivBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
 //        viewModel.getDetail(isFetch = true, id = documentId) //in real case
         viewModel.getDetail(isFetch = true, id = TEMP_DOC_ID)
@@ -50,7 +54,7 @@ class DetailFragment(
         //images
         val adapter = DetailHeaderAdapter(glide)
         val filteredList =
-            doc.section.filter { (it.content.href != null && it.content.href != "")}
+            doc.section.filter { (it.content.href != null && it.content.href != "") }
         Log.d(TAG, "updateUI: $filteredList")
         adapter.setItem(filteredList.map { it.content.href!! })
         binding.header.vp2.adapter = adapter
