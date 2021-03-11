@@ -26,5 +26,8 @@ data class DetailDocumentDto(
 
     @SerializedName("template_type")
     val templateType: String,
+
+    @SerializedName("sections")
+    val sections: List<SectionDto>
 ) {
 }

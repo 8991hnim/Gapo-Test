@@ -1,10 +1,15 @@
 package m.tech.gapotest.framework.datasource.network.mappers
 
-import m.tech.gapotest.business.domain.*
+import m.tech.gapotest.business.domain.BaseDocument
+import m.tech.gapotest.business.domain.DetailDocument
+import m.tech.gapotest.business.domain.Publisher
+import m.tech.gapotest.business.domain.Section
 import m.tech.gapotest.framework.datasource.DomainMapper
-import m.tech.gapotest.framework.datasource.cache.model.*
+import m.tech.gapotest.framework.datasource.network.mappers.DtoMapperUtil.fromContent
+import m.tech.gapotest.framework.datasource.network.mappers.DtoMapperUtil.toContent
 import m.tech.gapotest.framework.datasource.network.model.response.DetailDocumentDto
 import m.tech.gapotest.framework.datasource.network.model.response.PublisherDto
+import m.tech.gapotest.framework.datasource.network.model.response.SectionDto
 import javax.inject.Inject
 
 class DetailDocumentDtoMapper
@@ -25,7 +30,8 @@ constructor() : DomainMapper<DetailDocumentDto, DetailDocument> {
                     icon = model.publisher.icon
                 )
             ),
-            templateType = model.templateType
+            templateType = model.templateType,
+            section = model.sections.map { Section(it.sectionType, toContent(it.content)!!) }
         )
     }
 
@@ -41,7 +47,13 @@ constructor() : DomainMapper<DetailDocumentDto, DetailDocument> {
                 name = domainModel.baseDocument.publisher.name,
                 icon = domainModel.baseDocument.publisher.icon
             ),
-            templateType = domainModel.templateType
+            templateType = domainModel.templateType,
+            sections = domainModel.section.map {
+                SectionDto(
+                    it.sectionType,
+                    fromContent(it.content)!!
+                )
+            }
         )
     }
 
@@ -53,28 +65,5 @@ constructor() : DomainMapper<DetailDocumentDto, DetailDocument> {
         fromDomain(it)
     }
 
-    private fun fromImage(image: Image?): ImageEntity? {
-        return if (image != null)
-            ImageEntity(
-                href = image.href,
-                mainColor = image.mainColor,
-                width = image.width,
-                height = image.height,
-            )
-        else
-            null
-    }
-
-    private fun toImage(entity: ImageEntity?): Image? {
-        return if (entity != null)
-            Image(
-                href = entity.href,
-                mainColor = entity.mainColor,
-                width = entity.width,
-                height = entity.height,
-            )
-        else
-            null
-    }
 
 }

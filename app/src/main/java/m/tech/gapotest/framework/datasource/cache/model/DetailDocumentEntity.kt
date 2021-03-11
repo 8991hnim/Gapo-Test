@@ -16,5 +16,8 @@ data class DetailDocumentEntity(
 
     @ColumnInfo(name = "template_type")
     val templateType: String,
-){
+
+    @ColumnInfo(name = "sections")
+    val sectionEntity: List<SectionEntity>
+) {
 }

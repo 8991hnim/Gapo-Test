@@ -9,5 +9,18 @@
         android:id="@+id/newsFeedFragment"
         android:name="m.tech.gapotest.framework.presentation.news_feed.NewsFeedFragment"
         android:label="NewsFeedFragment"
-        tools:layout="@layout/fragment_news_feed" />
+        tools:layout="@layout/fragment_news_feed">
+        <action
+            android:id="@+id/action_newsFeedFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="m.tech.gapotest.framework.presentation.detail.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="documentId"
+            app:argType="string" />
+    </fragment>
 </navigation>

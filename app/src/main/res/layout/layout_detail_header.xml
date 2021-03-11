@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<m.tech.gapotest.util.CollapsibleToolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/motionLayout"
+    android:layout_width="match_parent"
+    android:layout_height="360dp"
+    android:fitsSystemWindows="false"
+    android:minHeight="?attr/actionBarSize"
+    app:layoutDescription="@xml/layout_detail_header_scene"
+    app:layout_scrollFlags="scroll|enterAlwaysCollapsed|exitUntilCollapsed">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="@dimen/img_size_normal"
+        android:layout_height="@dimen/img_size_normal"
+        android:layout_margin="12dp"
+        android:padding="@dimen/img_padding"
+        android:src="@drawable/ic_arrow_back"
+        app:tint="@android:color/black" />
+
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</m.tech.gapotest.util.CollapsibleToolbar>

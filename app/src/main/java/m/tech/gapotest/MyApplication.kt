@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import com.zxy.recovery.core.Recovery
 import dagger.hilt.android.HiltAndroidApp
-import m.tech.gapotest.framework.MainActivity
+import m.tech.gapotest.framework.presentation.MainActivity
 
 @HiltAndroidApp
 class MyApplication : Application() {

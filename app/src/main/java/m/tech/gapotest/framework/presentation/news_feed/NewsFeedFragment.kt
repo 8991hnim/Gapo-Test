@@ -1,6 +1,5 @@
 package m.tech.gapotest.framework.presentation.news_feed
 
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -25,11 +24,20 @@ class NewsFeedFragment : BaseFragment<FragmentNewsFeedBinding>(FragmentNewsFeedB
     private val tabsLoaded = HashMap<String, Boolean>()
 
     override fun init(view: View) {
+        showBottomNav()
         initTabsWithViewPager(view)
     }
 
     override fun subscribeObserver(view: View) {
-
+        commonViewModel.navDetail.observe(viewLifecycleOwner) { documentId ->
+            documentId?.let {
+                safeNav(
+                    R.id.newsFeedFragment,
+                    NewsFeedFragmentDirections.actionNewsFeedFragmentToDetailFragment(it)
+                )
+                commonViewModel.setNavDetail(null)
+            }
+        }
     }
 
     private fun initTabsWithViewPager(view: View) {

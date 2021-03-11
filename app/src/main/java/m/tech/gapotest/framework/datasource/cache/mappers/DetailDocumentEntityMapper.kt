@@ -3,6 +3,8 @@ package m.tech.gapotest.framework.datasource.cache.mappers
 import android.annotation.SuppressLint
 import m.tech.gapotest.business.domain.*
 import m.tech.gapotest.framework.datasource.DomainMapper
+import m.tech.gapotest.framework.datasource.cache.mappers.CacheMapperUtil.fromContent
+import m.tech.gapotest.framework.datasource.cache.mappers.CacheMapperUtil.toContent
 import m.tech.gapotest.framework.datasource.cache.model.*
 import java.text.SimpleDateFormat
 import javax.inject.Inject
@@ -28,7 +30,8 @@ constructor() : DomainMapper<DetailDocumentEntity, DetailDocument> {
                     icon = model.baseDocument.publisher.icon
                 )
             ),
-            templateType = model.templateType
+            templateType = model.templateType,
+            section = model.sectionEntity.map { Section(it.sectionType, toContent(it.content)!!) }
         )
     }
 
@@ -48,7 +51,13 @@ constructor() : DomainMapper<DetailDocumentEntity, DetailDocument> {
                     icon = domainModel.baseDocument.publisher.icon
                 )
             ),
-            templateType = domainModel.templateType
+            templateType = domainModel.templateType,
+            sectionEntity = domainModel.section.map {
+                SectionEntity(
+                    it.sectionType,
+                    fromContent(it.content)!!
+                )
+            }
         )
     }
 
@@ -58,30 +67,6 @@ constructor() : DomainMapper<DetailDocumentEntity, DetailDocument> {
 
     fun fromDomainList(list: List<DetailDocument>): List<DetailDocumentEntity> = list.map {
         fromDomain(it)
-    }
-
-    private fun fromImage(image: Image?): ImageEntity? {
-        return if (image != null)
-            ImageEntity(
-                href = image.href,
-                mainColor = image.mainColor,
-                width = image.width,
-                height = image.height,
-            )
-        else
-            null
-    }
-
-    private fun toImage(entity: ImageEntity?): Image? {
-        return if (entity != null)
-            Image(
-                href = entity.href,
-                mainColor = entity.mainColor,
-                width = entity.width,
-                height = entity.height,
-            )
-        else
-            null
     }
 
 }

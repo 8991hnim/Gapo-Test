@@ -68,6 +68,14 @@ abstract class BaseFragment<Binding : ViewBinding>(
 
     abstract fun subscribeObserver(view: View)
 
+    fun hideBottomNav() {
+        commonViewModel.setShowBottomNav(false)
+    }
+
+    fun showBottomNav() {
+        commonViewModel.setShowBottomNav(true)
+    }
+
     fun handleLoadingState(data: DataState<*>, view: View?) {
         if (data is DataState.Loading)
             view?.show()

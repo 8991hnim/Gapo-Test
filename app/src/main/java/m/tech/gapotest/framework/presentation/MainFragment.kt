@@ -5,7 +5,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import m.tech.gapotest.R
 import m.tech.gapotest.databinding.FragmentMainBinding
 import m.tech.gapotest.framework.presentation.common.BaseFragment
+import m.tech.gapotest.util.gone
 import m.tech.gapotest.util.setupWithNavController
+import m.tech.gapotest.util.show
 
 class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
     override fun init(view: View) {
@@ -30,6 +32,12 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     }
 
     override fun subscribeObserver(view: View) {
-
+        commonViewModel.showBottomNav.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.bottomNavView.show()
+            } else {
+                binding.bottomNavView.gone()
+            }
+        }
     }
 }

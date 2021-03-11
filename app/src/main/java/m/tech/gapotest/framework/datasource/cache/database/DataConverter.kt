@@ -4,6 +4,7 @@ import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import m.tech.gapotest.framework.datasource.cache.model.ImageEntity
+import m.tech.gapotest.framework.datasource.cache.model.SectionEntity
 
 class DataConverter {
 //    @TypeConverter
@@ -25,6 +26,17 @@ class DataConverter {
     @TypeConverter
     fun toImages(s: String?): List<ImageEntity>? {
         val type = object : TypeToken<List<ImageEntity>>() {}.type
+        return Gson().fromJson(s, type)
+    }
+
+    @TypeConverter
+    fun fromSections(list: List<SectionEntity>?): String? {
+        return Gson().toJson(list)
+    }
+
+    @TypeConverter
+    fun toSections(s: String?): List<SectionEntity>? {
+        val type = object : TypeToken<List<SectionEntity>>() {}.type
         return Gson().fromJson(s, type)
     }
 

@@ -114,8 +114,8 @@ class NewsFeedAdapter(
             binding.tvPublisherId.text = item.baseDocument.publisher.id
             binding.tvPublisherName.text = item.baseDocument.publisher.name
             item.content?.let {
-                glide.load(it.previewImage.href).into(binding.ivPreview)
-                binding.tvDuration.text = convertDurationToTime(it.duration)
+                glide.load(it.previewImage?.href).into(binding.ivPreview)
+                binding.tvDuration.text = convertDurationToTime(it.duration ?: 0)
             }
         }
 

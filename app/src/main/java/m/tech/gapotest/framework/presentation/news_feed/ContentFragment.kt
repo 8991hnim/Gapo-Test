@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
+import m.tech.gapotest.R
+import m.tech.gapotest.business.domain.NewsFeed
 import m.tech.gapotest.databinding.FragmentContentBinding
 import m.tech.gapotest.framework.presentation.common.BaseFragment
 import m.tech.gapotest.framework.presentation.news_feed.adapter.NewsFeedAdapter
@@ -24,7 +26,7 @@ class ContentFragment : BaseFragment<FragmentContentBinding>(FragmentContentBind
 
     private val newsFeedAdapter by lazy {
         NewsFeedAdapter(Glide.with(requireContext())) { position, item ->
-            displayToast(item.toString())
+            onNewsFeedSelected(position, item)
         }
     }
 
@@ -70,8 +72,11 @@ class ContentFragment : BaseFragment<FragmentContentBinding>(FragmentContentBind
 
             getData(it)?.let {
                 Log.d(TAG, "getData: ${it.size}")
-                for(i in it){
-                    Log.d(TAG, "subscribeObserver: ${i.baseDocument.documentId}: ${i.baseDocument.publishedDate} - ${i.baseDocument.title}")
+                for (i in it) {
+                    Log.d(
+                        TAG,
+                        "subscribeObserver: ${i.baseDocument.documentId}: ${i.baseDocument.publishedDate} - ${i.baseDocument.title}"
+                    )
                 }
                 newsFeedAdapter.submitList(it)
             }
@@ -80,6 +85,11 @@ class ContentFragment : BaseFragment<FragmentContentBinding>(FragmentContentBind
                 Log.e(TAG, "getErrorCode: $it")
             }
         }
+    }
+
+    private fun onNewsFeedSelected(position: Int, item: NewsFeed) {
+        displayToast(item.baseDocument.documentId)
+        commonViewModel.setNavDetail(item.baseDocument.documentId)
     }
 
     companion object {
@@ -93,5 +103,6 @@ class ContentFragment : BaseFragment<FragmentContentBinding>(FragmentContentBind
             return contentFragment
         }
     }
+
 
 }

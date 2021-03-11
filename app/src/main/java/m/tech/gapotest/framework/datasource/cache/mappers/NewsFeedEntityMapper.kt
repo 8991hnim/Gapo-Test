@@ -1,12 +1,18 @@
 package m.tech.gapotest.framework.datasource.cache.mappers
 
 import android.annotation.SuppressLint
-import android.util.Log
-import m.tech.gapotest.business.domain.*
+import m.tech.gapotest.business.domain.BaseDocument
+import m.tech.gapotest.business.domain.NewsFeed
+import m.tech.gapotest.business.domain.Publisher
 import m.tech.gapotest.framework.datasource.DomainMapper
-import m.tech.gapotest.framework.datasource.cache.model.*
+import m.tech.gapotest.framework.datasource.cache.mappers.CacheMapperUtil.fromContent
+import m.tech.gapotest.framework.datasource.cache.mappers.CacheMapperUtil.fromImage
+import m.tech.gapotest.framework.datasource.cache.mappers.CacheMapperUtil.toContent
+import m.tech.gapotest.framework.datasource.cache.mappers.CacheMapperUtil.toImage
+import m.tech.gapotest.framework.datasource.cache.model.BaseDocumentEntity
+import m.tech.gapotest.framework.datasource.cache.model.NewsFeedEntity
+import m.tech.gapotest.framework.datasource.cache.model.PublisherEntity
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 class NewsFeedEntityMapper
@@ -67,52 +73,6 @@ constructor() : DomainMapper<NewsFeedEntity, NewsFeed> {
 
     fun fromDomainList(list: List<NewsFeed>): List<NewsFeedEntity> = list.map {
         fromDomain(it)
-    }
-
-    private fun toContent(entity: ContentEntity?): Content? {
-        return if (entity != null)
-            Content(
-                href = entity.href,
-                previewImage = toImage(entity.previewImage)!!,
-                duration = entity.duration,
-                caption = entity.caption,
-            )
-        else null
-    }
-
-    private fun fromContent(domainModel: Content?): ContentEntity? {
-        return if (domainModel != null)
-            ContentEntity(
-                href = domainModel.href,
-                previewImage = fromImage(domainModel.previewImage)!!,
-                duration = domainModel.duration,
-                caption = domainModel.caption,
-            )
-        else null
-    }
-
-    private fun fromImage(image: Image?): ImageEntity? {
-        return if (image != null)
-            ImageEntity(
-                href = image.href,
-                mainColor = image.mainColor,
-                width = image.width,
-                height = image.height,
-            )
-        else
-            null
-    }
-
-    private fun toImage(entity: ImageEntity?): Image? {
-        return if (entity != null)
-            Image(
-                href = entity.href,
-                mainColor = entity.mainColor,
-                width = entity.width,
-                height = entity.height,
-            )
-        else
-            null
     }
 
 }

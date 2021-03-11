@@ -19,6 +19,14 @@ constructor(
     private val getDummies: GetDummies
 ) : ViewModel() {
 
+    private val _showBottomNav = MutableLiveData<Boolean>()
+    val showBottomNav: LiveData<Boolean>
+        get() = _showBottomNav
+
+    private val _navDetail = MutableLiveData<String?>()
+    val navDetail: LiveData<String?>
+        get() = _navDetail
+
     private val _dummies = MutableLiveData<DataState<List<Dummy>>>()
     val dummies: LiveData<DataState<List<Dummy>>>
         get() = _dummies
@@ -31,6 +39,14 @@ constructor(
                 }
             }
         }
+    }
+
+    fun setNavDetail(documentId: String?) {
+        _navDetail.value = documentId
+    }
+
+    fun setShowBottomNav(isShow: Boolean) {
+        _showBottomNav.value = isShow
     }
 
 }

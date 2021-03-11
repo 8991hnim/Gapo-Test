@@ -14,6 +14,6 @@ data class ContentEntity(
     val duration: Long,
 
     @ColumnInfo(name = "caption")
-    val caption: String?
+    val caption: String
 ) {
 }

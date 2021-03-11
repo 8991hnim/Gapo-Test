@@ -2,9 +2,10 @@ package m.tech.gapotest.framework.datasource.network.mappers
 
 import m.tech.gapotest.business.domain.*
 import m.tech.gapotest.framework.datasource.DomainMapper
-import m.tech.gapotest.framework.datasource.cache.model.*
-import m.tech.gapotest.framework.datasource.network.model.response.ContentDto
-import m.tech.gapotest.framework.datasource.network.model.response.ImageDto
+import m.tech.gapotest.framework.datasource.network.mappers.DtoMapperUtil.fromContent
+import m.tech.gapotest.framework.datasource.network.mappers.DtoMapperUtil.fromImage
+import m.tech.gapotest.framework.datasource.network.mappers.DtoMapperUtil.toContent
+import m.tech.gapotest.framework.datasource.network.mappers.DtoMapperUtil.toImage
 import m.tech.gapotest.framework.datasource.network.model.response.NewsFeedDto
 import m.tech.gapotest.framework.datasource.network.model.response.PublisherDto
 import javax.inject.Inject
@@ -61,50 +62,5 @@ constructor() : DomainMapper<NewsFeedDto, NewsFeed> {
         fromDomain(it)
     }
 
-    private fun toContent(model: ContentDto?): Content? {
-        return if (model != null)
-            Content(
-                href = model.href,
-                previewImage = toImage(model.previewImage)!!,
-                duration = model.duration,
-                caption = model.caption,
-            )
-        else null
-    }
-
-    private fun fromContent(domainModel: Content?): ContentDto? {
-        return if (domainModel != null)
-            ContentDto(
-                href = domainModel.href,
-                previewImage = fromImage(domainModel.previewImage)!!,
-                duration = domainModel.duration,
-                caption = domainModel.caption,
-            )
-        else null
-    }
-
-    private fun fromImage(image: Image?): ImageDto? {
-        return if (image != null)
-            ImageDto(
-                href = image.href,
-                mainColor = image.mainColor,
-                width = image.width,
-                height = image.height,
-            )
-        else
-            null
-    }
-
-    private fun toImage(entity: ImageDto?): Image? {
-        return if (entity != null)
-            Image(
-                href = entity.href,
-                mainColor = entity.mainColor ?: "#FFFFFF",
-                width = entity.width,
-                height = entity.height,
-            )
-        else
-            null
-    }
 
 }
